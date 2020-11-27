@@ -6,7 +6,6 @@ public class SnakeAndLadder {
 	int userPos;
 	int dice;
 	int option;
-	int dieCounter=0;
 	//int newPos;
 	public SnakeAndLadder(){
 		userPos = STARTPOS;
@@ -16,10 +15,10 @@ public class SnakeAndLadder {
 		System.out.println("************Welcome to Snakes and Ladders Game*****************");
 	}
 	
-	public void rollDice(){
+	public int rollDice(){
 		Random randomRoll = new Random();
 		int move;
-		while(userPos<ENDPOS) {
+		//while(userPos<ENDPOS) {
 			dice = randomRoll.nextInt(6)+1;
 			System.out.println("Dice Rolled value: " + dice);
 			move = playGame();
@@ -30,7 +29,7 @@ public class SnakeAndLadder {
 					  System.out.println("User At Position: " + userPos);
 				  }
 				  else {
-					  System.out.println("We are getting More than : " +ENDPOS);
+					  System.out.println("Player getting More than : " +ENDPOS);
 				  }
 				  break;
 			  case 2:
@@ -48,9 +47,11 @@ public class SnakeAndLadder {
 				  System.out.println("Stay in place");
 				  System.out.println("User Position at: " + userPos);
 			}
-			dieCounter++;
-		}
-		System.out.println("You Finally Reached "+ ENDPOS +" with Rolling Count: "+dieCounter);
+			
+		//}
+		//System.out.println("You Finally Reached "+ ENDPOS +" with Rolling Count: "+dieCounter);
+		return userPos;
+		
 	}
 
 	public int playGame() {
@@ -72,7 +73,24 @@ public class SnakeAndLadder {
 	}
 
 	public static void main(String[] args) {
+		int winnerPos=0;
+		int diecounter=0;
 		SnakeAndLadder user = new SnakeAndLadder();
-		user.rollDice();
+		SnakeAndLadder user2 = new SnakeAndLadder();
+		while(winnerPos<100) {
+			System.out.println("************User1************");
+			winnerPos=user.rollDice();
+			if(winnerPos==100) {
+				System.out.println("Player 1 is winner with Die Count :" +diecounter);
+			}
+			System.out.println("************User2************");
+			winnerPos=user2.rollDice();
+			if(winnerPos==100) {
+				System.out.println("Player2 is winner with Die Count :" +diecounter);
+			}
+			System.out.println("*****************************");
+			diecounter++;
+		}
+						
 	}
 }
