@@ -6,6 +6,7 @@ public class SnakeAndLadder {
 	int userPos;
 	int dice;
 	int option;
+	int dieCounter=0;
 	//int newPos;
 	public SnakeAndLadder(){
 		userPos = STARTPOS;
@@ -47,8 +48,9 @@ public class SnakeAndLadder {
 				  System.out.println("Stay in place");
 				  System.out.println("User Position at: " + userPos);
 			}
+			dieCounter++;
 		}
-		System.out.println("You Finally Reached 100");
+		System.out.println("You Finally Reached "+ ENDPOS +" with Rolling Count: "+dieCounter);
 	}
 
 	public int playGame() {
