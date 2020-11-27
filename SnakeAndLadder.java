@@ -18,18 +18,18 @@ public class SnakeAndLadder {
 	public void rollDice(){
 		Random randomRoll = new Random();
 		int move;
-		while(userPos<100) {
-			dice = randomRoll.nextInt(5)+1;
+		while(userPos<ENDPOS) {
+			dice = randomRoll.nextInt(6)+1;
 			System.out.println("Dice Rolled value: " + dice);
 			move = playGame();
 			switch(move){
 			  case 1: 
-				  if((userPos+dice)<=100) {
+				  if((userPos+dice)<= ENDPOS) {
 					  userPos = userPos + dice;
 					  System.out.println("User At Position: " + userPos);
 				  }
 				  else {
-					  System.out.println("We are getting More than 100");
+					  System.out.println("We are getting More than : " +ENDPOS);
 				  }
 				  break;
 			  case 2:
